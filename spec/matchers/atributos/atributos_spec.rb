@@ -1,11 +1,19 @@
 require 'pessoa'
 
 describe 'Atributos' do
-  before(:each) do
-    @pessoa = Pessoa.new
-  end
+  # before(:each) do
+  #   @pessoa = Pessoa.new
+  # end
+  #
+  # after(:each) do
+  #   @pessoa.nome = "Nome zerado"
+  # end
 
-  after(:each) do
+  around(:each) do |spec|
+    @pessoa = Pessoa.new
+
+    spec.run #roda o teste
+
     @pessoa.nome = "Nome zerado"
   end
 
